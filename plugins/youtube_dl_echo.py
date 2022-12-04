@@ -21,7 +21,7 @@ from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, Tim
 @Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
     await AddUser(bot, update)
-    imog = await update.reply_text("Processing...⚡", reply_to_message_id=update.message_id)
+    imog = await update.reply_text("Processing...", reply_to_message_id=update.message_id)
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
@@ -96,7 +96,7 @@ async def echo(bot, update):
         if "This video is only available for registered users." in error_message:
             error_message = Translation.SET_CUSTOM_USERNAME_PASSWORD
         else:
-            error_message = "Invalid url 🚸</code>"
+            error_message = "Invalid URL</code>"
         await bot.send_message(chat_id=update.chat.id,
         text=Translation.NO_VOID_FORMAT_FOUND.format(str(error_message)),
         disable_web_page_preview=True, parse_mode="html",
